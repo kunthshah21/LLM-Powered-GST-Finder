@@ -11,7 +11,7 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Load CSV file
-csv_path = "cleaned_data.csv"
+csv_path = "datasets/cleaned_data.csv"
 df = pd.read_csv(csv_path)
 
 # Ensure required columns exist
@@ -36,13 +36,13 @@ documents = [
 vector_store = FAISS.from_documents(documents, embeddings)
 
 # Save FAISS index locally
-faiss_save_path = "faiss_index"
+faiss_save_path = "datasets/faiss_index"
 vector_store.save_local(faiss_save_path)
 
 # Save S. No. mappings in a pickle file
 metadata_dict = {desc: s_no for desc, s_no in zip(descriptions, serial_numbers)}
 
-with open("data_index.pkl", "wb") as f:
+with open("datasets/data_index.pkl", "wb") as f:
     pickle.dump(metadata_dict, f)
 
 print("✅ FAISS index and metadata mapping saved successfully!")

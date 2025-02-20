@@ -1,5 +1,5 @@
 import pandas as pd
-df = pd.read_csv("data.csv")
+df = pd.read_csv("datasets/data.csv")
 
 # Trim extra spaces at the beginning and end of text in all columns
 df = df.applymap(lambda x: x.strip() if isinstance(x, str) else x)
