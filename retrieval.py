@@ -42,6 +42,13 @@ def retrieve_info_from_faiss(query, top_k=3):
 
         for _, row in matched_rows.iterrows():
             row_dict = row.to_dict()
+
+            # Convert the tax rate fields to percentage format
+            tax_columns = ["CGST Rate (%)", "SGST / UTGST Rate (%)", "IGST Rate (%)"]
+            for col in tax_columns:
+                if col in row_dict and isinstance(row_dict[col], (int, float)):  # Ensure it's a number
+                    row_dict[col] = f"{row_dict[col] * 100:.1f}"
+
             output_rows.append({
                 "S. No.": row_dict["S. No."],
                 "Description of Goods": row_dict["Description of Goods"],
