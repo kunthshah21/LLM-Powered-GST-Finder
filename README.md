@@ -5,6 +5,8 @@ This project leverages the power of Retrival Augmented Generation (RAG) architec
 
 # Methodology 
 This application works by using a RAG architecture. At first the database of the official GST Data is found. This information is then cleaned to remove null and "Omitted" values. This is then followed by extracting only the Sr. No. and Description which is embedded for each row in the vector database. This would then be followied by retrival, locating the top Sr. No. which is then pattern matched to the orignal database to extract the full GST information. 
+
+
 ![Rag gst image](https://github.com/user-attachments/assets/bfb83476-416c-4f87-a90c-f290dfc68a30)
 
 
