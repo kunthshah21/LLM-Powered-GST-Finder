@@ -4,7 +4,10 @@
 This project leverages the power of Retrival Augmented Generation (RAG) architecture to find the the gst rates of Indian goods and services, with only its product description. 
 
 # Methodology 
-The general overview of thsi model would be to first take the GST dataset, and perform EDA on top of it, to clean and retrieve the most valuable colomns from the dataset, optimising cost and performance. Once this information is found, this is then converted to a vector database using FAISS Encoding, of only a key-value pair like storage methodology. This process ensures that the data the can be read and understood by the llm. Post that a search query is executed to find the releavent results from the documents, once the correct Sr. No. (Key) is found, it is then pattern matched through the orignal database, to retrieve the full row information. s
+This application works by using a RAG architecture. At first the database of the official GST Data is found. This information is then cleaned to remove null and "Omitted" values. This is then followed by extracting only the Sr. No. and Description which is embedded for each row in the vector database. This would then be followied by retrival, locating the top Sr. No. which is then pattern matched to the orignal database to extract the full GST information. 
+![Rag gst image](https://github.com/user-attachments/assets/bfb83476-416c-4f87-a90c-f290dfc68a30)
+
+
 
 ## Data Cleaning and feeding 
 There existed 2 issues with the orignal dataset. Both of them were fixed: 
